@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import {SignUp} from './sign-up/sign-up';
+import {SignUp} from './sign-up-page/sign-up';
 import {HomePage} from './home-page/home-page';
 
 

@@ -1,0 +1,19 @@
+<div class="formContainer">
+  <form class="signUpForm" (ngSubmit)="sendSignUpRequest()">
+    <div class="headerContainer">
+      <h1>Sign up</h1>
+    </div>
+
+    <label for="email">Email</label>
+    <input id="email" type="email" name="email" [(ngModel)]="formState.email"/>
+
+    <label for="password">Password</label>
+    <input id="password" type="text" name="password" [(ngModel)]="formState.password">
+
+    <label for="firstName">First Name</label>
+    <input id="firstName" type="text" name="firstName" [(ngModel)]="formState.firstName">
+
+    <button>Submit</button>
+
+  </form>
+</div>
