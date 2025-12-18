@@ -1,0 +1,10 @@
+.titleBar, buttonBar {
+  display: flex;
+  justify-content: center;
+}
+
+.applicationSummary {
+
+  display : flex;
+  flex-direction: row;
+}
