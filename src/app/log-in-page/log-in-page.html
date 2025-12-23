@@ -1,0 +1,20 @@
+<!--
+TODO: add css styling and decide on what next page should be
+-->
+
+<div class="formContainer">
+  <form class="logInForm" (ngSubmit)="sendLoginRequest()">
+    <div class="headerContainer">
+      <h1>Log in</h1>
+    </div>
+
+    <label for="email">Email</label>
+    <input id="email" type="email" name="email" [(ngModel)]="loginState.email"/>
+
+    <label for="password">Password</label>
+    <input id="password" type="text" name="password" [(ngModel)]="loginState.password">
+
+    <button>Submit</button>
+
+  </form>
+</div>

@@ -1,0 +1,12 @@
+.pageContainer {
+  display : flex;
+  place-content : center;
+
+}
+
+
+.formContainer {
+  display : flex;
+  flex-direction : column;
+  width: fit-content;
+}

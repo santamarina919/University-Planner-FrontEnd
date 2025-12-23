@@ -1,0 +1,29 @@
+
+
+
+
+<h1>Plan Selection & Creation</h1>
+<div>
+    @if(plans$ | async; as plans){
+      @if(plans.length == 0){
+        <p>You have not created any plans</p>
+      }
+      @else{
+        @for(plan of plans; track plan.id){
+          @let campus = plan.campus;
+          <div>
+            <p>{{plan.id}}</p>
+            <p>{{plan.name}}</p>
+            <p>Created on {{plan.date}}</p>
+            <p>for {{campus.name}}</p>
+          </div>
+        }
+      }
+      <p>loaded</p>
+    }
+    @else {
+      <p>fetching plans</p>
+    }
+  @let creationLink = ROUTES.CREATE_PLAN;
+  <button [routerLink]="[creationLink]">Create A New Plan</button>
+</div>

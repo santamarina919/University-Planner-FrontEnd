@@ -1,0 +1,35 @@
+<div class="pageContainer">
+  <form class="formContainer" (ngSubmit)="submitForm()">
+    <h1>Create a Plan</h1>
+    <label>Name</label>
+    <input name="name" [(ngModel)]="planForm.name" />
+
+<!--  todo add submit funciton add value attribute to options  -->
+    <label>University</label>
+    <select (change)="fetchDegreesOfUniversity($event)">
+      @if(campuses | async; as allCampuses){
+        @for(campus of allCampuses; track campus.id){
+          <option value="{{campus.id}}">{{campus.name}}</option>
+        }
+      }
+      @else{
+        <option [disabled]="true">Fetching campuses...</option>
+      }
+    </select>
+
+    <label>Degree</label>
+    <select autocomplete="on" (change)="updateSelectedDegreeList($event)">
+      @if(degrees() | async; as allDegrees){
+        @for(degree of allDegrees; track degree.id){
+          <option value="{{degree.id}}">{{degree.name}}</option>
+        }
+      }
+      @else{
+        <option [disabled]="true">Pick a campus first</option>
+        <option [disabled]="true">Pick a </option>
+      }
+    </select>
+
+    <button>Create</button>
+  </form>
+</div>
