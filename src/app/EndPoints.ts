@@ -11,3 +11,5 @@ export const ALL_CAMPUS = '/scheduler/universities/supported'
 export const DEGREES_FROM = '/scheduler/universities/degreesOf'
 
 export const CREATE_PLAN = '/scheduler/plans/create'
+
+export const COURSE_STATES = '/scheduler/plans/course-states'

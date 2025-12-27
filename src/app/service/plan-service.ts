@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {ALL_PLANS, CREATE_PLAN} from '../EndPoints';
+import {HttpClient, HttpParams} from '@angular/common/http';
+import {ALL_PLANS, COURSE_STATES, CREATE_PLAN} from '../EndPoints';
 
 
 export interface PlanDetails {
@@ -19,6 +19,15 @@ export interface Campus {
   name :string
 }
 
+export interface CourseState {
+  id :string,
+  courseId :string,
+  name :string,
+  units :number,
+  isCompleted :boolean,
+  semesterCompleted :number
+}
+
 export class PlanFrom {
   public constructor(public name :string, public degreeIds :string[]){}
 }
@@ -33,5 +42,9 @@ export class PlanService {
 
   public createPlan(planDetails :PlanFrom){
     return this.http.post<string>(CREATE_PLAN,planDetails)
+  }
+
+  public courseStates(planId :string){
+    return this.http.get<CourseState>(COURSE_STATES,{params : new HttpParams().set('planId',planId)})
   }
 }
