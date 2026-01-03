@@ -1,0 +1,48 @@
+.addRemoveToolBar {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.planningContainer {
+  display: flex;
+  padding: 1rem;
+}
+
+.pickContainer {
+  width: 50%;
+}
+
+.plannedContainer {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.plannedCourseListContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+}
+
+.pickableCourseListContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-right: 1rem;
+}
+
+
+
+.semesterHeader {
+  display: flex;
+  place-content: center;
+}
+
+.undoRedoToolBar {
+  display: grid;
+  justify-content: end;
+}
+
+

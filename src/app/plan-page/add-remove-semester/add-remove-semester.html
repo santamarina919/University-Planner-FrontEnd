@@ -1,0 +1,41 @@
+<div>
+  <!-- Semester Header -->
+  <div class="addRemoveToolBar">
+    <div></div>
+    <div class="semesterHeader">
+      <app-arrow direction="left" (click)="changeSemesterBy(-1)" [clickable]="true"></app-arrow>
+      <h4>Semester #{{ currentSemester() }}</h4>
+      <app-arrow direction="right" (click)="changeSemesterBy(1)" [clickable]="true"></app-arrow>
+    </div>
+    <div class="undoRedoToolBar">
+      <div>
+        <app-undo-arrow></app-undo-arrow>
+        <app-redo-arrow></app-redo-arrow>
+      </div>
+    </div>
+  </div>
+  <div class="planningContainer">
+    <div class="pickContainer">
+      <div>
+        <h4>Available to pick</h4>
+      </div>
+      <div class="pickableCourseListContainer">
+        @for (course of available(); track course.id) {
+          <app-course [course]="course" (click)="addCourse(course.id)" [clickable]="true" [simpleView]="true" [transitionType]="'add'"></app-course>
+        } @empty {
+          <p>No course available to pick</p>
+        }
+      </div>
+    </div>
+    <div class="plannedContainer">
+      <h4>Currently Planned - Unit Sum: {{unitTotal()}}</h4>
+      <div class="plannedCourseListContainer">
+        @for (course of planned(); track course.id) {
+          <app-course [course]="course" (click)="removeCourse(course.id)" [simpleView]="true" [clickable]="true" [transitionType]="'remove'"></app-course>
+        } @empty {
+          <p>No courses are planned</p>
+        }
+      </div>
+    </div>
+  </div>
+</div>

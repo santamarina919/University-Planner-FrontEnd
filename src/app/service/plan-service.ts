@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {ALL_PLANS, COURSE_STATES, CREATE_PLAN} from '../EndPoints';
+import {ADD_COURSE, ALL_PLANS, COURSE_STATES, CREATE_PLAN} from '../EndPoints';
 
 
 export interface PlanDetails {
@@ -24,8 +24,18 @@ export interface CourseState {
   courseId :string,
   name :string,
   units :number,
-  isCompleted :boolean,
-  semesterCompleted :number
+  firstSemesterPlannable :number | null,
+  semesterPlanned :number | null
+}
+
+export interface ChangedCourseState {
+  id :string
+  firstSemesterPlanned :number | null
+  semesterPlanned :number | null
+}
+
+export interface StateChange {
+  courseStateChanges : ChangedCourseState[]
 }
 
 export class PlanFrom {
@@ -45,6 +55,11 @@ export class PlanService {
   }
 
   public courseStates(planId :string){
-    return this.http.get<CourseState>(COURSE_STATES,{params : new HttpParams().set('planId',planId)})
+    return this.http.get<CourseState[]>(COURSE_STATES,{params : new HttpParams().set('planId',planId)})
   }
+
+  public addCourseToPlan(planId :string, surrogateId :string, semester :number){
+    return this.http.post<StateChange>(ADD_COURSE(planId),{},{params : new HttpParams().set('courseId',surrogateId).set('semester',semester)})
+  }
+
 }

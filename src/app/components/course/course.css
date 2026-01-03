@@ -1,0 +1,34 @@
+.courseContainer {
+  display: flex;
+  margin-right: 1px;
+  border-color: gray;
+  border-style: solid;
+  padding: 5px;
+  border-radius: 15px;
+  border-width: thin;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.add {
+  transition-property: background-color,color;
+  transition-duration: 950ms;
+}
+
+.add:hover {
+  background-color: #21ec4c;
+  color: black;
+}
+
+.remove {
+  transition-property: background-color,color;
+  transition: 900ms;
+}
+
+.remove:hover {
+  background-color: red;
+  color: black;
+}
+

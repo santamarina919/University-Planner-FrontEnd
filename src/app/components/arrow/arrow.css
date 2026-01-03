@@ -1,0 +1,31 @@
+.left {
+  transform: rotate(180deg);
+
+}
+
+.right {
+
+}
+
+svg.all path {
+  fill: white; /* Changes the interior color */
+  stroke: white; /* Changes the outline color */
+  stroke-width: 20px; /* Note: SVGs use their internal coordinate system for width */
+}
+
+svg.all {
+  width: 1rem;
+  height: 1rem;
+}
+
+.svgContainer {
+  margin-top: 150%;
+  display: block;
+  justify-content: center;
+  align-items: center;
+}
+
+.clickable {
+  cursor : pointer;
+}
+

@@ -1,0 +1,13 @@
+<div [ngClass]="['courseContainer', clickable() ? 'clickable': '', transitionType()]">
+
+  @if (simpleView()) {
+    <p>{{course().courseId}} - {{course().name}} - {{course().units}} unit(s)</p>
+  } @else {
+    <p>{{course().id}}</p>
+    <p>{{course().courseId}}</p>
+    <p>{{course().name}}</p>
+    <p>{{course().units}}</p>
+    <p>Available Starting at: {{course().firstSemesterPlannable}}</p>
+    <p>Planned for semester: {{course().semesterPlanned == null ? 'Not planned' : course().semesterPlanned}}</p>
+  }
+</div>
