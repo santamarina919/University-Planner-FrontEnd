@@ -27,7 +27,7 @@ export class AddRemoveSemester {
 
   courseStates = model<CourseState[]>([])
 
-  available = computed(() => this.courseStates().filter(course => course.semesterPlanned == null && course.firstSemesterPlannable != null && course.firstSemesterPlannable < this.currentSemester()))
+  available = computed(() => this.courseStates().filter(course => course.semesterPlanned == null && course.firstSemesterPlannable != null && this.currentSemester() >= course.firstSemesterPlannable))
 
   planned = computed(() => this.courseStates().filter(course => course.semesterPlanned != null && course.semesterPlanned == this.currentSemester()))
 
@@ -50,6 +50,12 @@ export class AddRemoveSemester {
 
   }
 
+  NO_CHANGE = null
+
+  RESET = -1
+
+  RESET_INITIALLY_AVAILABLE = -2
+
   applyStateChanges(stateChanges :StateChange){
     const courseChangeMap = new Map<string,ChangedCourseState>()
     stateChanges.courseStateChanges.forEach(newState => {
@@ -58,11 +64,33 @@ export class AddRemoveSemester {
 
     this.courseStates.update(prevStates => prevStates.map(courseState => {
       if (courseChangeMap.has(courseState.id)){
-        console.log("this state changed")
         const newState = courseChangeMap.get(courseState.id)!
 
-        const newFirstSemester = newState.firstSemesterPlanned == null ? courseState.firstSemesterPlannable : newState.firstSemesterPlanned
-        const newSemesterPlanned = newState.semesterPlanned == null ? courseState.semesterPlanned : newState.semesterPlanned
+        let newFirstSemester;
+        let newSemesterPlanned;
+        if(newState.firstSemesterPlannable == this.NO_CHANGE){
+          newFirstSemester = courseState.firstSemesterPlannable;
+        }
+        else if(newState.firstSemesterPlannable == this.RESET){
+          newFirstSemester = null;
+        }
+        else if(newState.firstSemesterPlannable == this.RESET_INITIALLY_AVAILABLE){
+          newFirstSemester = 0;
+        }
+        else {
+          newFirstSemester = newState.firstSemesterPlannable;
+        }
+
+        if(newState.semesterPlanned == this.NO_CHANGE){
+          newSemesterPlanned = courseState.semesterPlanned;
+        }
+        else if(newState.semesterPlanned == this.RESET) {
+          newSemesterPlanned = null;
+        }
+        else {
+          newSemesterPlanned = newState.semesterPlanned;
+        }
+
         return {...courseState,firstSemesterPlannable : newFirstSemester,semesterPlanned : newSemesterPlanned};
       }else {
         return courseState;
@@ -72,6 +100,8 @@ export class AddRemoveSemester {
   }
 
   removeCourse(surrogateId: string) {
-    throw new Error("TODO IMPLEMENT")
+    const planId = this.activatedRoute.snapshot.paramMap.get("planId")!
+    this.planService.removeCourseFromPlan(planId,surrogateId)
+      .subscribe(response => this.applyStateChanges(response))
   }
 }

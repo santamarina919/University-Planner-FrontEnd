@@ -17,3 +17,7 @@ export const COURSE_STATES = '/scheduler/plans/course-states'
 export const ADD_COURSE = (planId :string)=> {
   return `/scheduler/plans/${planId}/add`
 }
+
+export const REMOVE_COURSE = (planId :string) => {
+  return `/scheduler/plans/${planId}/remove`
+}
