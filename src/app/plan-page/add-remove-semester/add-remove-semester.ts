@@ -6,6 +6,8 @@ import {NgOptimizedImage} from '@angular/common';
 import {Arrow} from '../../components/arrow/arrow';
 import {UndoArrow} from '../../components/undo-arrow/undo-arrow';
 import {RedoArrow} from '../../components/redo-arrow/redo-arrow';
+import {BackNavigation} from '../../components/back-navigation/back-navigation';
+import {ROUTES} from '../../app.routes';
 
 @Component({
   selector: 'app-add-remove-semester',
@@ -13,7 +15,8 @@ import {RedoArrow} from '../../components/redo-arrow/redo-arrow';
     Course,
     Arrow,
     UndoArrow,
-    RedoArrow
+    RedoArrow,
+    BackNavigation
   ],
   templateUrl: './add-remove-semester.html',
   styleUrl: './add-remove-semester.css',
@@ -27,6 +30,10 @@ export class AddRemoveSemester {
 
   courseStates = model<CourseState[]>([])
 
+  stateChanges :CourseState[][] = []
+
+  currentStateIndex = signal(0)
+
   available = computed(() => this.courseStates().filter(course => course.semesterPlanned == null && course.firstSemesterPlannable != null && this.currentSemester() >= course.firstSemesterPlannable))
 
   planned = computed(() => this.courseStates().filter(course => course.semesterPlanned != null && course.semesterPlanned == this.currentSemester()))
@@ -34,6 +41,16 @@ export class AddRemoveSemester {
   unitTotal = computed(() => this.planned().map(course => course.units).reduce((acc,curr) => {return curr + acc},0))
 
   currentSemester = signal<number>(this.START_SEMESTER)
+
+  constructor() {
+    effect(() => {
+      this.stateChanges.push(this.courseStates())
+    });
+
+    this.courseStates.subscribe((newState) => {
+      this.stateChanges.push(newState)
+    })
+  }
 
   changeSemesterBy(amount :number){
     if(this.currentSemester() + amount <= 0){
@@ -104,4 +121,17 @@ export class AddRemoveSemester {
     this.planService.removeCourseFromPlan(planId,surrogateId)
       .subscribe(response => this.applyStateChanges(response))
   }
+
+  protected redoEffect() {
+    if(this.currentStateIndex() == 0) return
+    this.currentStateIndex.update(prev => prev - 1)
+  }
+
+  protected undoEffect() {
+    if(this.currentStateIndex() == this.stateChanges.length - 1) return
+    this.currentStateIndex.update(prev => prev + 1)
+  }
+
+  protected readonly document = document;
+  protected readonly ROUTES = ROUTES;
 }

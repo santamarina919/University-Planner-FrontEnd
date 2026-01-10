@@ -1,3 +1,7 @@
+<div class="localNavigation">
+  <app-back-navigation class="navigationSvg" [route]="ROUTES.PLAN_LIST"></app-back-navigation>
+  <h5>Back to Plan List</h5>
+</div>
 <div class="rootContainer">
   @if(courseStates().length != 0){
     <app-add-remove-semester [(courseStates)]="courseStates"></app-add-remove-semester>

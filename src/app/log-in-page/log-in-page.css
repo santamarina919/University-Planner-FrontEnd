@@ -1,0 +1,21 @@
+.headerContainer {
+  display: flex;
+  place-content: center;
+}
+
+.formContainer {
+  display: flex;
+  place-content: center;
+}
+
+.logInForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.logInForm input {
+  margin-bottom: 1rem;
+}
+
+
+

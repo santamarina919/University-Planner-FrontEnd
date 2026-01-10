@@ -24,6 +24,6 @@ export const ROUTES = {
   CREATE_PLAN :'/scheduler/create'
 }
 
-export function specificPlanPath(planId :string) {
+export function routeToPlan(planId :string) {
   return`/scheduler/plans/${planId}`
 }

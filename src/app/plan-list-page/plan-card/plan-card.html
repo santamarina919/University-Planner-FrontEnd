@@ -1,0 +1,11 @@
+<div class="planCardContainer" (click)="routeToPlanPage()">
+  <p class="planIdHeader">ID: {{planDetails().id}}</p>
+  <p class="planNameHeader">{{planDetails().name}}</p>
+  <p class="universityHeader">University:{{planDetails().campus.name}}</p>
+  @if (childDegrees | async; as degrees) {
+    <p class="degreeList">{{degreesAsStr(degrees)}}</p>
+  } @else {
+    <p>Something is wrong here (this plan has no degrees associated with it)</p>
+  }
+  <p class="degreeCreationDate">Created on {{formatDate(planDetails().creationDate)}}</p>
+</div>

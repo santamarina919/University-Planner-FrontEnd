@@ -2,3 +2,14 @@
   border-color: black;
   border-style: solid;
 }
+
+
+.localNavigation {
+  display: flex;
+  margin-left: 10px;
+}
+
+.navigationSvg {
+  padding-top: 18px;
+  margin-right: 1rem;
+}

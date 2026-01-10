@@ -1,29 +1,23 @@
-
-
-
-
-<h1>Plan Selection & Creation</h1>
-<div>
-    @if(plans$ | async; as plans){
-      @if(plans.length == 0){
-        <p>You have not created any plans</p>
-      }
-      @else{
-        @for(plan of plans; track plan.id){
-          @let campus = plan.campus;
-          <div>
-            <p>{{plan.id}}</p>
-            <p>{{plan.name}}</p>
-            <p>Created on {{plan.date}}</p>
-            <p>for {{campus.name}}</p>
-          </div>
+<div class="container">
+  <div>
+    <div class="flex-center"><h1>Plan Selection & Creation</h1></div>
+    <div class="flex-center">
+      <div>
+        @if (plans$ | async; as plans) {
+        @if (plans.length == 0) {
+          <div class="flex-center"><p>You have not created any plans</p></div>
+        } @else {
+          @for (plan of plans; track plan.id) {
+            <app-plan-card [planDetails]="plan"></app-plan-card>
+          }
         }
-      }
-      <p>loaded</p>
-    }
-    @else {
-      <p>fetching plans</p>
-    }
-  @let creationLink = ROUTES.CREATE_PLAN;
-  <button [routerLink]="[creationLink]">Create A New Plan</button>
+      } @else {
+        <p>fetching plans...</p>
+      }</div>
+    </div>
+    @let creationLink = ROUTES.CREATE_PLAN;
+    <div class="flex-center">
+      <button [routerLink]="[creationLink]" class="genericButton">Create A New Plan</button>
+    </div>
+  </div>
 </div>

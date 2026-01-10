@@ -21,3 +21,5 @@ export const ADD_COURSE = (planId :string)=> {
 export const REMOVE_COURSE = (planId :string) => {
   return `/scheduler/plans/${planId}/remove`
 }
+
+export const CHILD_DEGREES = '/scheduler/plans/childdegrees'

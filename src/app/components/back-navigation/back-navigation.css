@@ -1,0 +1,10 @@
+svg path {
+  fill: white;
+  stroke: white;
+}
+
+svg {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}

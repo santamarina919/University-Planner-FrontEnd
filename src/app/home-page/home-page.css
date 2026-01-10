@@ -1,10 +1,15 @@
-.titleBar, buttonBar {
+.titleBar, .buttonBar {
   display: flex;
+  flex-direction: row;
   justify-content: center;
 }
 
-.applicationSummary {
+.buttonBar > button {
+  margin-right: 1rem;
+}
 
-  display : flex;
-  flex-direction: row;
+
+
+.appSummary {
+  padding: 1rem;
 }

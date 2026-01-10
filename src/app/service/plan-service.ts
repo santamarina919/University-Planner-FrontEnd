@@ -1,6 +1,7 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {ADD_COURSE, ALL_PLANS, COURSE_STATES, CREATE_PLAN, REMOVE_COURSE} from '../EndPoints';
+import {ADD_COURSE, ALL_PLANS, CHILD_DEGREES, COURSE_STATES, CREATE_PLAN, REMOVE_COURSE} from '../EndPoints';
+import {map} from 'rxjs';
 
 
 export interface PlanDetails {
@@ -8,6 +9,7 @@ export interface PlanDetails {
   name :string,
   date :string
   campus :Campus
+  creationDate :string
 }
 
 export interface Campus {
@@ -42,12 +44,21 @@ export class PlanFrom {
   public constructor(public name :string, public degreeIds :string[]){}
 }
 
+export interface Degree{
+  id:string
+  name:string
+}
+
 @Injectable({providedIn : 'root'})
 export class PlanService {
   http = inject(HttpClient)
 
   public allPlans(){
-    return this.http.get<PlanDetails[]>(ALL_PLANS,{credentials : 'include'})
+    return this.http.get<PlanDetails[]>(ALL_PLANS,{credentials : 'include'}).pipe(
+      map(plans => plans.sort((a, b) => {
+        return new Date(b.creationDate).getTime() - new Date(a.creationDate).getTime();
+      }))
+    );
   }
 
   public createPlan(planDetails :PlanFrom){
@@ -64,6 +75,12 @@ export class PlanService {
 
   removeCourseFromPlan(planId: string, surrogateId: string) {
     return this.http.post<StateChange>(REMOVE_COURSE(planId),{},{params : new HttpParams().set('courseId',surrogateId)})
+  }
+
+
+
+  public childDegreesOfPlan(planId :string){
+    return this.http.get<Degree[]>(CHILD_DEGREES,{params : new HttpParams().set('planId',planId)})
   }
 
 }

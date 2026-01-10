@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  place-content: center;
+}
+
+.planList {
+
+}
+
+.planList > div {
+  margin-bottom: 1rem;
+}

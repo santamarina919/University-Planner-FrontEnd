@@ -8,6 +8,7 @@
     <label>University</label>
     <select (change)="fetchDegreesOfUniversity($event)">
       @if(campuses | async; as allCampuses){
+        <option  [disabled]="true">Chose a campus from this list</option>
         @for(campus of allCampuses; track campus.id){
           <option value="{{campus.id}}">{{campus.name}}</option>
         }
@@ -26,10 +27,9 @@
       }
       @else{
         <option [disabled]="true">Pick a campus first</option>
-        <option [disabled]="true">Pick a </option>
       }
     </select>
 
-    <button>Create</button>
+    <button class="genericButton">Create</button>
   </form>
 </div>

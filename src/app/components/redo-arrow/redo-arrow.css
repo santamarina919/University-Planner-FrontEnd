@@ -2,5 +2,6 @@ svg>path {
   stroke : white;
 }
 svg {
+  cursor: pointer;
   margin-top: 1rem;
 }

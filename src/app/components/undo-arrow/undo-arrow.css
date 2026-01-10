@@ -3,5 +3,5 @@ svg>path {
 }
 svg {
   margin-top: 1rem;
-
+  cursor: pointer;
 }

@@ -1,0 +1,34 @@
+.planCardContainer {
+  border-style: solid;
+  border-color: white;
+  border-radius: 20px;
+  padding: 8px;
+  margin-bottom: 25px;
+  cursor: pointer;
+}
+
+.planIdHeader {
+  font-size:11px;
+  color: gray;
+}
+
+.planNameHeader {
+  margin-top: -10px;
+  font-weight: bold;
+}
+
+.universityHeader {
+  margin-top: -11px;
+  font-size: 14px;
+}
+
+.degreeList {
+  font-size: 14px;
+  margin-top: -10px;
+}
+
+.degreeCreationDate{
+  font-size: 14px;
+  box-sizing: border-box;
+  margin-top: -10px;
+}

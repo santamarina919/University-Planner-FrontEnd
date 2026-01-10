@@ -6,7 +6,7 @@ import {Campus, PlanFrom, PlanService} from '../service/plan-service';
 import {AsyncPipe} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
-import {specificPlanPath} from '../app.routes';
+import {routeToPlan} from '../app.routes';
 
 export interface Degree{
   id :string,
@@ -52,7 +52,7 @@ export class CreatePlanPage {
 
   submitForm() {
     this.planService.createPlan(this.planForm)
-      .subscribe(planId => this.router.navigate([specificPlanPath(planId)]))
+      .subscribe(planId => document.startViewTransition( async () =>  this.router.navigate([routeToPlan(planId)])))
   }
 
   fetchDegreesOfUniversity(event: any) {

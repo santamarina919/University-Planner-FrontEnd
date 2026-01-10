@@ -3,6 +3,9 @@
   flex-direction : column;
   width : fit-content;
 }
+.signUpForm > input {
+  margin-bottom: 8px;
+}
 
 .formContainer {
   display : flex;

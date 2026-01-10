@@ -3,21 +3,52 @@
 </div>
 
 <div class="buttonBar">
-  <button>Log In</button> <button>Sign In</button>
+  <button class="genericButton" [routerLink]="ROUTES.SIGNUP">Sign Up</button> <button class="genericButton" [routerLink]="ROUTES.LOGIN" >Sign In</button>
 </div>
 
 <div>
-  <div class="applicationSummary">
-    <p>
-      Public graphs is a repository of universities across the U.S that allow anybody to create a plan to complete a degree from any of those universities.
-      To create a plan you have to create an account and then chose a university from the support lists. From there you will see a list of degrees that are currently supported by the application.
-      Please note that the data used to create these graphs is publicily source and thus cannot be taken as 100% correct.
-      After planning a degree using this application it would be importatnt to double check that plan with an advisor or someone of the sort. DO NOT ASSUME THE SCHEDULER IS 100% CORRECT.
-    </p>
-    <div class="csuSystem">
-      <h4>The CSU System</h4>
-      <p>Public graphs started out by supported the degrees offered by all CSU campuses. You can check out each university in this list below.</p>
+  <div class="textBlocks">
+    <div class="faqList">
+      <div>
+        <h2>What is Public Graphs?</h2>
+        <p>
+          Public Graphs is a project that allows anyone to upload a degree schematic for any university.
+          A degree schematic essentially list all the requirements of some degree at a particular school. Some
+          requirements
+          include required courses, prerequisites, and degree categories (The underlying data structure to represent
+          these
+          object and their relationships is a graph). Once created users can then create a plan that fulfills all the
+          requirements listed in the
+          schematic.
+        </p>
+      </div>
+
+      <div>
+        <h2>How can I create a schematic?</h2>
+        <p>Good question I will get back to you once I implement it</p>
+      </div>
+
+      <div>
+        <h2>How can I plan using a schematic?</h2>
+        <p>You can plan using a schematic by first
+          <a href="{{ROUTES.SIGNUP}}">signing up</a> and <a href="{{ROUTES.LOGIN}}">logging in</a>.
+          Once logged navigate to the <a href="{{ROUTES.PLAN_LIST}}">plans list</a> page. There is where all the plans you already created will be located
+          (it will be empty since you just signed up). The <a href="{{ROUTES.PLAN_LIST}}">plans list</a> is also where you can create plans by clicking "create a plan". From there you fill
+          out the form and submit and you'll be redirected to the planning page.
+        </p>
+      </div>
+
+      <div>
+        <h2>What universities are supported?</h2>
+        <p>You can browse and search through the <a href="gabage">explore page</a></p>
+      </div>
+
+      <h2>Is the application correct?</h2>
+      <p>The application uses information that is user generated. It cannot be guaranteed to be 100% correct and makes no promises of that. Instead students should look at the requirements for the specific
+      program they are looking at and become familiar with it. Then they should return to the scheduler and use to plan a schedule while validating information and finally verifying with a counselor</p>
     </div>
+
+
   </div>
 
 </div>

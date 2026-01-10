@@ -4,12 +4,14 @@ import {Observable} from 'rxjs';
 import {AsyncPipe} from '@angular/common';
 import {RouterLink} from '@angular/router';
 import {ROUTES} from '../app.routes';
+import {PlanCard} from './plan-card/plan-card';
 
 @Component({
   selector: 'app-plan-list-page',
   imports: [
     AsyncPipe,
-    RouterLink
+    RouterLink,
+    PlanCard
   ],
   templateUrl: './plan-list-page.html',
   styleUrl: './plan-list-page.css',

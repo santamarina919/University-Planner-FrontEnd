@@ -8,5 +8,65 @@
 
 html {
   background-color: var(--background-color);
+}
+
+body {
   color: var(--text-color);
+}
+
+.dm-sans-font {
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+input,select {
+  all: unset;
+  box-sizing: border-box;
+  background-color: #424549;
+  padding: 3px 3px 3px .25rem;
+  border-radius: 4px;
+}
+
+input,select,button {
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+button {
+  all : unset;
+}
+
+.genericButton {
+  display: flex;
+  place-content: center;
+  cursor: pointer;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 10px;
+  transition: 950ms;
+  padding : 2px
+
+}
+
+.genericButton:hover {
+  box-shadow: 0 0 3px 2px white;
+
+}
+
+.flex-center {
+  display: flex;
+  place-content: center;
+}
+
+
+.border-debug {
+  border-style: dashed;
+  border-color: pink;
+}
+.full-height {
+  height: 100%;
 }
