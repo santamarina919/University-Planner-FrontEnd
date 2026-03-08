@@ -1,0 +1,18 @@
+.degreeCard > h5 {
+  color : grey;
+  margin-bottom: -10px;
+}
+
+.degreeCard {
+  border-style: solid;
+  padding: 1rem;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+
+.degreeCardContainer {
+  display: flex;
+  place-content: center;
+  gap: 1rem;
+}

@@ -2,7 +2,22 @@
 
   @if (simpleView()) {
     <p>{{course().courseId}} - {{course().name}} - {{course().units}} unit(s)</p>
-  } @else {
+  }
+  @else if(stateView()) {
+    <div>
+      <p>{{ course().courseId }} - {{ course().name }} - {{ course().units }} unit(s)</p>
+      <div class="stateData">
+        @if (available() && planned()){
+          <p class="added">Course has been added. Planned for semester: {{course().semesterPlanned}}</p>
+        } @else if (available() && !planned()){
+          <p class="available">Can be added to semester starting at semester: {{course().firstSemesterPlannable}}</p>
+        } @else {
+          <p class="unavailable">Course cannot be added to any semester</p>
+        }
+      </div>
+    </div>
+  }
+  @else {
     <p>{{course().id}}</p>
     <p>{{course().courseId}}</p>
     <p>{{course().name}}</p>

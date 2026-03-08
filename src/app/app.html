@@ -1,1 +1,13 @@
-<router-outlet/>
+<div class="rootContainer">
+  <div class="signInState">
+    <button>{{ signedInText() }}</button>
+  </div>
+
+  <div class="navBar">
+    <button [routerLink]="ROUTES.HOMEPAGE" >Home</button>
+    <button [routerLink]="ROUTES.EXPLORE">Explore</button>
+    <button [routerLink]="ROUTES.PLAN_LIST">Plan</button>
+  </div>
+
+  <router-outlet/>
+</div>

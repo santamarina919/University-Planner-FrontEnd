@@ -1,0 +1,9 @@
+<div>
+  @for (semester of semesters();track semester.semNumber){
+    <app-semester-card [semester]="semester"></app-semester-card>
+  } @empty {
+    <div>
+      <p>You added any courses to your plans</p>
+    </div>
+  }
+</div>

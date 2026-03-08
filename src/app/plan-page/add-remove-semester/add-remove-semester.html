@@ -7,13 +7,7 @@
       <h4>Semester #{{ currentSemester() }}</h4>
       <app-arrow direction="right" (click)="changeSemesterBy(1)" [clickable]="true" ></app-arrow>
     </div>
-    <div class="endTools">
-      <div class="undoRedoToolBar">
-        <app-undo-arrow (click)="undoEffect()"></app-undo-arrow>
-        <h2>{{currentStateIndex() + 1}}</h2>
-        <app-redo-arrow (click)="redoEffect()"></app-redo-arrow>
-      </div>
-    </div>
+    <div></div>
   </div>
   <div class="planningContainer">
     <div class="pickContainer">
@@ -22,7 +16,7 @@
       </div>
       <div class="pickableCourseListContainer">
         @for (course of available(); track course.id) {
-          <app-course [course]="course" (click)="addCourse(course.id)" [clickable]="true" [simpleView]="true" [transitionType]="'add'"></app-course>
+          <app-course [course]="course" (click)="addCourse()(course.id,currentSemester())" [clickable]="true" [simpleView]="true" [transitionType]="'add'"></app-course>
         } @empty {
           <p>No course available to pick</p>
         }
@@ -32,7 +26,7 @@
       <h4>Currently Planned - Unit Sum: {{unitTotal()}}</h4>
       <div class="plannedCourseListContainer full-height flex-center">
         @for (course of planned(); track course.id) {
-          <app-course [course]="course" (click)="removeCourse(course.id)" [simpleView]="true" [clickable]="true" [transitionType]="'remove'"></app-course>
+          <app-course [course]="course" (click)="removeCourse()(course.id)" [simpleView]="true" [clickable]="true" [transitionType]="'remove'"></app-course>
         } @empty {
           <div class="flex-center"><p>No courses are planned</p></div>
         }

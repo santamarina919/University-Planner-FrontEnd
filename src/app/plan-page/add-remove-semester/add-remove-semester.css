@@ -45,13 +45,4 @@
   justify-content: end;
 }
 
-.undoRedoToolBar {
-  display: flex;
-  flex-direction: row;
-}
-
-.undoRedoToolBar h2 {
-  margin-top: 15px;
-}
-
 

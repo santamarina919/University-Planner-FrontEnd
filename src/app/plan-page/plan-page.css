@@ -13,3 +13,116 @@
   padding-top: 18px;
   margin-right: 1rem;
 }
+
+
+.toolbar {
+  display: grid;
+  grid-template-columns: .15fr 1fr;
+  grid-template-rows: 1fr;
+}
+
+.undoSection {
+  display: flex;
+  border-style: solid;
+  border-color: black;
+  border-bottom-style: none;
+}
+
+.displaySection {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding-left: 1rem;
+  border-style: solid;
+  border-color: black;
+  border-bottom-style: none;
+  border-left-style: none;
+  gap: 2rem;
+}
+
+.untoggled , .toggled  {
+  cursor: pointer;
+  user-select: none;
+  border: solid;
+  padding: 3px;
+}
+
+#resetState {
+  border-color: white;
+  color: white;
+  border-style: dashed;
+  background-color: transparent;
+  transition-property: all;
+  transition-duration: .5s;
+}
+
+#resetState:hover {
+  border-color: red;
+  color: red;
+  border-style: solid;
+
+}
+
+.toggleContainter {
+  display: flex;
+  width: 100%;
+  place-content: center;
+}
+
+.untoggled {
+  color: #9999;
+}
+
+.toggled {
+  color: inherit;
+}
+
+.toolbar h2 {
+  margin-top: 15px;
+}
+
+.tools {
+  margin-top: 1rem;
+  display: flex;
+}
+
+.tools > * {
+  border-style: solid;
+  padding: 1rem;
+  gap: 1rem;
+  width: 100%;
+}
+
+.stateDescription {
+  display: flex;
+  place-content: center;
+  width: 100%;
+  padding: 4px;
+}
+
+
+.popover {
+  background-color: black;
+  color: white;
+}
+
+
+#resetPopover {
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(10px);
+  background-color: transparent;
+  border-left-style: none;
+}
+
+#resetPopover > div {
+  display: flex;
+  place-content: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+#resetPopover > div > div {
+  display: flex;
+  place-content: center;
+}

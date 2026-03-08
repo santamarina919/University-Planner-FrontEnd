@@ -23,3 +23,24 @@ export const REMOVE_COURSE = (planId :string) => {
 }
 
 export const CHILD_DEGREES = '/scheduler/plans/childdegrees'
+
+export const RESET_PLAN = '/scheduler/plans/reset'
+
+export const APPLY_STATE = '/scheduler/plans/applystate'
+
+export const REQUIREMENT_STRUCTURE = (planId :string) => {
+  return `/scheduler/${planId}/requirement-structure`
+}
+
+export const ALL_DEGREES ='/scheduler/universities/degrees'
+
+export const DEGREE_DATA = (degreeId :string) => {
+  return `/scheduler/degrees/${degreeId}`
+}
+
+export const CAMPUS_DATA = (campusId :string) => {
+  return `/scheduler/campus/${campusId}`
+}
+export const COURSE_DATA = (courseId :string) => {
+  return `/scheduler/course/${courseId}`
+}

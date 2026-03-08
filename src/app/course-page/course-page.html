@@ -1,0 +1,19 @@
+<div>
+  @if (courseData(); as data) {
+    <div>
+      <h4>(ID: {{data.surrogateId}})</h4>
+      <h1>{{data.courseId}} - {{data.name}} - {{data.units}} units</h1>
+      <h3>Refers to course offered at: {{data.owningCampus.name}}</h3>
+    </div>
+    @if (data.rootPrereq ) {
+      <div>
+        <app-prerequisite-comp [prerequisite]="data.rootPrereq" [componentPadding]="0" [borderColorIndex]="0"></app-prerequisite-comp>
+      </div>
+    } @else {
+      <div class="flex-centerg"><p>This course requires no prerequisites</p></div>
+    }
+  }
+  @else {
+    <p>Loading course data</p>
+  }
+</div>

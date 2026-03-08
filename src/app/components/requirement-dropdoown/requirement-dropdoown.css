@@ -1,0 +1,16 @@
+.dropDownTitle {
+  cursor: pointer;
+  display: flex;
+}
+
+.dropDownContentHidden,.dropdownContentShown {
+  margin-left: 2.5rem;
+}
+.dropDownContentHidden {
+  display: none;
+}
+
+.dropdownContentShown {
+  display: block;
+}
+

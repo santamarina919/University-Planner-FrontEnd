@@ -32,3 +32,23 @@
   color: black;
 }
 
+
+.stateData {
+  margin-top: -2rem;
+  display: flex;
+  gap: 1rem;
+  font-size: .95rem;
+}
+
+
+.unavailable {
+  color: darkgrey;
+}
+
+.added {
+  color: green;
+}
+
+.available {
+  color: lightblue;
+}

@@ -1,0 +1,18 @@
+<div class="rootContainer">
+  @if (degree(); as d) {
+    <div class="titleBar">
+      <div class="flex-center">
+        <h5>(ID: {{d.degreeId}})</h5>
+      </div>
+      <div class="degreeNameDiv">
+        <h1>{{ d.name }}</h1>
+      </div>
+      <div class="flex-center campusDiv">
+        <p>Offered at: {{d.owningCampus.name}}</p>
+      </div>
+      <app-requirement-dropdoown [requirement]="d.rootRequirement" [leftPadding]="0" [borderIndex]="0"></app-requirement-dropdoown>
+    </div>
+  } @else {
+    <h1>Fetching Degree Content</h1>
+  }
+</div>

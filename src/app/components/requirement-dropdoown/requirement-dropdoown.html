@@ -1,0 +1,29 @@
+<div [style.padding-left.px]="leftPadding()" [style.border-style]="'solid'" [style.border-color]="borderColors[borderIndex()]" (click)="toggleShown()">
+  <div class="dropDownTitle">
+    <app-dropdown-down [hidden]="shown()"></app-dropdown-down>
+    <app-dropdown-up [hidden]="!shown()"></app-dropdown-up>
+    @if (requirement().name; as name) {
+      <h4>{{ name }} ({{ requirement().requirementId }})</h4>
+    } @else {
+      <h4>{{ requirement().requirementId }}</h4>
+    }
+  </div>
+
+  <div [class]="shown() ? 'dropdownContentShown' : 'dropDownContentHidden'">
+    <div>
+      @if (requirement().type == 'AND') {
+        <p class="typeDesc"><strong>Complete all sub-requirements and courses</strong></p>
+      } @else {
+        <p class="typeDesc"><strong>Complete at least 1 sub-requirement or course</strong></p>
+      }
+    </div>
+
+    @for (course of requirement().leafCourses; track course.id) {
+      <app-course-dto [course]="course"></app-course-dto>
+    }
+
+
+    @for (req of requirement().childReqs; track req.requirementId) {
+      <app-requirement-dropdoown [requirement]="req" [leftPadding]="4 + leftPadding()" [borderIndex]="borderIndex() + 1"></app-requirement-dropdoown>
+    }</div>
+</div>

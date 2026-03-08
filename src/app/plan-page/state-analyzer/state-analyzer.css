@@ -1,0 +1,14 @@
+.sortBar {
+  display: flex;
+  gap: 1rem;
+}
+
+.sortBar >h4:last-child {
+  border-style: solid;
+  padding: 3px;
+}
+.sortBar > h4:first-child {
+  padding: 3px;
+}
+
+

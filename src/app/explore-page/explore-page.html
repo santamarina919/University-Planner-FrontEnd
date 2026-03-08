@@ -1,0 +1,34 @@
+<div>
+
+  <div class="tableContainer">
+    <table>
+      <thead>
+
+      <tr>
+        <th><h3>Campus</h3></th>
+        <th><h3>Degree</h3></th>
+      </tr>
+
+      <tr class="inputHeader">
+<!--        <th><input (input)="updateIdFilter($event)" /></th>-->
+        <th><input (input)="updateCampusFilter($event)" /></th>
+        <th><input (input)="updateDegreeFilter($event)" /></th>
+      </tr>
+
+      <tr>
+<!--        <th>ID</th>-->
+        <th>Campus</th>
+        <th>Degree</th>
+      </tr>
+      </thead>
+      @for (degree of showDegrees(); track degree.id) {
+        <tr>
+          <!--  TODO implement degree page and campus page then course page then make navigable from prereq, req page toa ll other componenetns      -->
+<!--          <td>{{ degree.id }}</td>-->
+          <td class="uniName" [routerLink]="routeToCampus(degree.owningCampus.id)">{{ degree.owningCampus.name }}</td>
+          <td class="degreeNameDiv" [routerLink]="routeToDegree(degree.id)">{{ degree.name }}</td>
+        </tr>
+      }
+    </table>
+  </div>
+</div>

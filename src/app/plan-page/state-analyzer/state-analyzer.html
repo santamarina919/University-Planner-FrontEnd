@@ -1,0 +1,11 @@
+<div xmlns="http://www.w3.org/1999/html">
+  <div class="sortBar"><h4>Sort By:</h4> <h4 (click)="changeSortValue()">{{sortDescription()}}</h4></div>
+  @for (state of displayStates(); track state.id) {
+    @if (sortIndex() == 1) {
+      <p>Available: {{state.firstSemesterPlannable == null ? 'Not Available' : state.firstSemesterPlannable}}</p>
+    } @else if (sortIndex() == 2){
+      <p>Planned: {{state.semesterPlanned == null ? 'Not Planned' : state.semesterPlanned}}</p>
+    }
+    <app-course [course]="state" [stateView]="true"></app-course>
+  }
+</div>

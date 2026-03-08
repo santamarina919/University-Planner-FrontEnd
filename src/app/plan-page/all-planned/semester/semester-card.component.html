@@ -1,0 +1,9 @@
+<div>
+  <h2>Semester {{ semester().semNumber }} Total Units {{ totalUnits() }}</h2>
+</div>
+
+<div>
+  @for (course of semester().courses; track course.id) {
+    <app-course [course]="course"></app-course>
+  }
+</div>

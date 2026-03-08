@@ -1,0 +1,9 @@
+<div (click)="toggleRootReq()">
+  <h4>{{degree().id}}</h4>
+  <h4>{{degree().name}}</h4>
+  <h4>{{isCompletedStr()}}</h4>
+  <div [class]="showRootRequirement() ? 'show' : 'hide'">
+    <app-requirement [requirement]="degree().requirement" [courseStates]="courseStates()" [requirementMap]="requirementMap()"></app-requirement>
+  </div>
+
+</div>

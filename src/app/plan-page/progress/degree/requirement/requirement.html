@@ -1,0 +1,19 @@
+<div>
+  <h5>Requirement - {{requirement().id}} - {{completed() ? 'COMPLETED' : 'NOT COMPLETED'}}</h5>
+  <h6>{{typeStr()}}</h6>
+  @if (requirement().name; as name) {
+    <h6>{{name}}</h6>
+  }
+  <div>
+    @for (courseId of requirement().leafCourses; track courseId) {
+      <app-course [stateView]="true" [course]="courseStates().get(courseId)!"></app-course>
+    }
+  </div>
+
+  <div>
+    @for(req of requirement().childRequirements; track req){
+      <app-requirement [requirement]="req" [courseStates]="courseStates()" [requirementMap]="requirementMap()"></app-requirement>
+    }
+  </div>
+
+</div>

@@ -13,7 +13,10 @@ export function authInterceptor(
   return next(req).pipe(
     tap({
       error : (req :HttpResponse<any>) => {
-        if(req.status == HttpStatusCode.Forbidden){
+        console.log("fdasfda")
+        console.log(req.url)
+        if(req.status == HttpStatusCode.Forbidden
+        && !req.url?.endsWith("signup")){
           router.navigate([ROUTES.LOGIN])
         }
       }

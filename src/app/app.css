@@ -1,0 +1,44 @@
+button {
+  cursor: pointer;
+}
+
+.navBar {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-style: solid;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.navBar > button:first-child {
+  border-right-style: solid;
+}
+
+.navBar > button:last-child {
+  border-left-style: solid ;
+}
+
+
+.signInState {
+  display: grid;
+  place-items: end;
+  margin-bottom: 1rem;
+}
+
+.signInState >  button {
+  place-self: end;
+}
+
+button {
+  display: flex;
+  place-content: center;
+}
+
+
+.rootContainer {
+  padding: .25rem;
+}
+
+

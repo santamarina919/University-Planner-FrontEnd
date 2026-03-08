@@ -1,0 +1,21 @@
+.rootContainer {
+  display: flex;
+  place-content: center;
+}
+
+.degreeNameDiv {
+  display: flex;
+  place-content: center;
+  margin-top: -35px;
+}
+
+.degreeNameDiv > h5 {
+  color: grey;
+  margin-bottom: -1rem;
+}
+
+.campusDiv {
+  margin-top: -2rem;
+}
+
+

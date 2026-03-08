@@ -1,0 +1,4 @@
+@for (degree of degrees(); track degree.id) {
+  <h3>Degree #{{$index + 1}}</h3>
+  <app-degree [degree]="degree" [courseStates]="stateMap()"></app-degree>
+}

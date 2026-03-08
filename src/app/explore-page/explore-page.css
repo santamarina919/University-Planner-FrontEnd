@@ -1,0 +1,30 @@
+
+
+.tableContainer  table, .tableContainer th,.tableContainer td {
+  border: 1px solid white;
+  border-collapse: collapse;
+}
+
+.inputHeader > th > input{
+  width: 100%;
+}
+
+.tableContainer {
+  display: flex;
+  place-content: center;
+}
+
+.uniName {
+  cursor: pointer;
+}
+
+.degreeNameDiv {
+  cursor: pointer;
+}
+
+.tableContainer td {
+  padding: .25rem;
+}
+
+
+

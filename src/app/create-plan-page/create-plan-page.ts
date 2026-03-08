@@ -2,16 +2,11 @@ import {Component, computed, effect, inject, signal} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {DegreeService} from '../service/degree-service';
 import {Observable} from 'rxjs';
-import {Campus, PlanFrom, PlanService} from '../service/plan-service';
+import {Campus, Degree, PlanFrom, PlanService} from '../service/plan-service';
 import {AsyncPipe} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
 import {routeToPlan} from '../app.routes';
-
-export interface Degree{
-  id :string,
-  name :string
-}
 
 
 @Component({

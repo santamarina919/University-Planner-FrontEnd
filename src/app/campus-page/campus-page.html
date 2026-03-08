@@ -1,0 +1,26 @@
+<div>
+  @if (campusDetails(); as details) {
+    <div>
+      <h1>{{details.campus.name}}</h1>
+      <h5>(Schematic ID: {{details.campus.id}})</h5>
+    </div>
+
+    <div>
+      @let address = details.campus.address;
+      <p> Located at: {{address.streetNumber}} {{address.streetName}} {{address.city}} California {{address.postalCode}}</p>
+    </div>
+    <h5>Supported Degrees</h5>
+    <div class="degreeCardContainer">
+      @for (degree of details.degree; track degree.id) {
+        <div class="degreeCard" [routerLink]="routeToDegree(degree.id)">
+          <h5>(ID: {{ degree.id }})</h5>
+          <h4>{{ degree.name }}</h4>
+        </div>
+      }
+    </div>
+
+  }
+  @else {
+    <p>Loading campus assets</p>
+  }
+</div>

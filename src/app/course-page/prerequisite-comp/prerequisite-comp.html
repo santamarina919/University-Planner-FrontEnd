@@ -1,0 +1,37 @@
+<div
+  [style.padding.px]="10"
+  [style.padding-left.px]="componentPadding() + 10"
+  [style.border-color]="color()"
+  [style.border-style]="'solid'">
+  <div class="dropDownHeader" (click)="toggleContent()">
+    <app-dropdown-down [hidden]="!hideContent()"></app-dropdown-down>
+    <app-dropdown-up [hidden]="hideContent()"></app-dropdown-up>
+    <h4>Prerequisite (ID: {{prerequisite().id}}) - {{prerequisite().type}} type</h4>
+  </div>
+
+  <div [hidden]="hideContent()">
+    <div>
+      <h5>Leaf Courses</h5>
+      <div>
+        @for (course of prerequisite().leafCourses; track course.id) {
+          <p [routerLink]="routeToCourse(course.id)">{{ course.courseId }} {{ course.name }}</p>
+        }
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <h5>Child Prerequisites</h5>
+        @for (prereq of prerequisite().children; track prereq.children) {
+          <app-prerequisite-comp [prerequisite]="prereq"
+                                 [componentPadding]="componentPadding() + 4"
+                                 [borderColorIndex]="borderColorIndex() + 1 % 3"
+
+          ></app-prerequisite-comp>
+        } @empty {
+          <p>None</p>
+        }
+      </div>
+    </div>
+  </div>
+</div>

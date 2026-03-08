@@ -2,11 +2,59 @@
   <app-back-navigation class="navigationSvg" [route]="ROUTES.PLAN_LIST"></app-back-navigation>
   <h5>Back to Plan List</h5>
 </div>
+
+
+<div>
+<div class="toolbar">
+  <div class="undoSection">
+    <app-undo-arrow (click)="decrementStateIndex()"></app-undo-arrow>
+    <h3>{{ currentStateIndex() + 1 }}</h3>
+    <app-redo-arrow (click)="incrementStateIndex()"></app-redo-arrow>
+    <div><p class="stateDescription">{{ stateDescription.get(this.currentStateIndex()) }}</p></div>
+  </div>
+  <div class="displaySection">
+    <div class="toggleContainter"><h3 [class]="showStates() ? 'toggled' : 'untoggled'" (click)="toggleDisplay(showStates)">States</h3></div>
+    <div class="toggleContainter"><h3 [class]="showPlanned() ? 'toggled' : 'untoggled'" (click)="toggleDisplay(showPlanned)">Planned</h3></div>
+    <div class="toggleContainter"><h3 [class]="showProgress() ? 'toggled' : 'untoggled'" (click)="toggleDisplay(showProgress)">Progress</h3></div>
+    <div class="toggleContainter">
+      <button popovertarget="resetPopover"><h3 class="untoggled" id="resetState">RESET</h3></button>
+    </div>
+  </div>
+</div>
+</div>
 <div class="rootContainer">
-  @if(courseStates().length != 0){
-    <app-add-remove-semester [(courseStates)]="courseStates"></app-add-remove-semester>
+  @if(currentState(); as courseStates){
+    <app-add-remove-semester
+      [currentState]="courseStates"
+      [applyStateChange]="applyStateChange"
+      [moveToPreviousState]="moveToPreviousState"
+      [addCourse]="addCourse"
+      [removeCourse]="removeCourse"
+    ></app-add-remove-semester>
   }
   @else{
     <p>Loading scheduler assets</p>
   }
+</div>
+<div class="tools">
+  @if (showStates() && currentState(); as courseStates){
+    <app-state-analyzer [courseStates]="courseStates"></app-state-analyzer>
+  }
+  @if (showPlanned() && currentState(); as states) {
+    <app-all-planned [currentState]="states"></app-all-planned>
+  }
+  @if (showProgress() && degreeStructure() && currentState(); as structure) {
+    <app-progress [degrees]="degreeStructure()" [states]="structure"></app-progress>
+  }
+</div>
+
+
+<div class="popover" id="resetPopover" popover>
+  <div>
+    <div><h2>Are You Sure You Want To Reset Your Plan?</h2></div>
+    <div class="flex-center">
+      <button class="genericButton" popovertarget="resetPopover" (click)="resetState()">Yes</button>
+      <button class="genericButton" popovertarget="resetPopover">No</button>
+    </div>
+  </div>
 </div>
